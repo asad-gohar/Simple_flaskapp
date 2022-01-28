@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Assignment</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon.png">
+
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/choices.min.js"></script>
+</head>
+
+<body class="bg-white">
+
+    <ul class="float-right mr-3">
+        <li class="nav-item">
+            <a href="/logout" class=" ai-icon">
+                <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                <span class="ml-2">Logout </span>
+            </a>
+
+        </li>
+
+
+    </ul>
+
+
+
+    <div class="container-fluid mt-5">
+
+        <div class="authincation h-100">
+            <div class="container h-100">
+                <div class="row justify-content-center h-100 align-s-center">
+                    <div class="col-md-10">
+
+                        <div class="authincation-content mt-5 mb-4">
+                            <div class="row no-gutters">
+                                <div class="col-xl-12">
+                                    <div class="auth-form">
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                                <a class="nav-item nav-link active" id="Category-tab" data-toggle="tab" href="#Category" role="tab" aria-controls="Category" aria-selected="true">Category</a>
+                                                <a class="nav-item nav-link" id="Product-tab" data-toggle="tab" href="#Product" role="tab" aria-controls="Product" aria-selected="false">Product</a>
+                                            </div>
+                                        </nav>
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="Category" role="tabpanel" aria-labelledby="Category-tab">
+                                                <div class="container mt-5">
+                                                    <form id="basic-form" action="/add_category" method="post" class="mt-2">
+
+                                                        <div class="form-group"><label for="cate" class="mb-1 text-black">Category Name</label><input class=" input_css " type="text" id="" name="name" required></div>
+                                                        <span class="focus-input100"></span>
+
+
+
+
+
+                                                        <div class="text-left mt-4 ">
+                                                            <div class="form-group"><button class="btn  btn-primary btn-lg rounded-0 border-0" type="submit" style="color: rgb(255,255,255);">Submit</button></div>
+
+                                                        </div>
+
+
+                                                    </form>
+                                                    <div>
+                                                        <table class="table table-striped">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Name</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for i in category %}
+                                                                <tr>
+                                                                    <th scope="row">{{ loop.index }}</th>
+                                                                    <td>{{i.name}}</td>
+
+                                                                </tr>
+                                                                {% endfor %}
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="Product" role="tabpanel" aria-labelledby="Product-tab">
+                                                <div class="container mt-5">
+                                                    <form id="basic-form" action="/add_product" method="post" class="mt-2" enctype="multipart/form-data">
+
+                                                        <div class="form-group"><label for="cate" class="mb-1 text-black">Title</label><input class=" input_css " type="text" id="" name="title" required></div>
+                                                        <div class="form-group"><label for="cate" class="mb-1 text-black">Category</label>
+                                                            <select id="choices-multiple-remove-button" name="category" placeholder="Select upto 5 tags" multiple>
+                                                                {% for i in category %}
+                                                                <option value="{{i.id}}">{{i.name}}</option>
+                                                                {% endfor %}
+
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group"><label for="image" class="mb-1 text-black">Image</label><input class=" input_css " type="file" id="image" name="image" required></div>
+                                                        <div class="form-group"><label for="description" class="mb-1 text-black">Description</label><input class=" input_css " type="text" id="description" name="description" required></div>
+                                                        <div class="form-group"><label for="price" class="mb-1 text-black">Price</label><input class=" input_css " type="text" id="price" name="price" required></div>
+
+                                                        <span class="focus-input100"></span>
+
+
+
+
+
+                                                        <div class="text-left mt-4 ">
+                                                            <div class="form-group"><button class="btn  btn-primary btn-lg rounded-0 border-0" type="submit" style="color: rgb(255,255,255);">Submit</button></div>
+
+                                                        </div>
+
+
+                                                    </form>
+                                                    <div>
+                                                        <table class="table table-striped">
+                                                            <thead>
+
+                                                                <tr>
+                                                                    <th scope="col">#</th>
+                                                                    <th scope="col">Name</th>
+                                                                    <th scope="col">Description</th>
+                                                                    <th scope="col">Image</th>
+                                                                    <th scope="col">Price</th>
+
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                {% for i in product %}
+                                                                <tr>
+                                                                    <th scope="row">{{ loop.index }}</th>
+                                                                    <th scope="col">{{i.title}}</th>
+                                                                    <th scope="col">{{i.description}}</th>
+                                                                    <th scope="col"><img src="{{i.image}}" height="200" width="200" alt=""></th>
+                                                                    <th scope="col">{{i.price}}</th>
+
+
+                                                                </tr>
+                                                                {% endfor %}
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <!-- <script>
+        var form = $("#basic-form");
+        form.validate()
+
+
+    </script> -->
+    <script>
+        $(document).ready(function() {
+
+            var multipleCancelButton = new Choices('#choices-multiple-remove-button', {
+                removeItemButton: true,
+                maxItemCount: 5,
+                searchResultLimit: 5,
+                renderChoiceLimit: 5
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

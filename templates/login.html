@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Assignment</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/images/favicon.png">
+
+
+    <link href="../static/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="../static/vendor/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+
+    <div class="authincation h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 align-s-center">
+                <div class="col-md-6">
+
+                    <div class="authincation-content mt-5 mb-4">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <div class="text-center mb-5 ">
+                                        <a href="/"><img src="/static/images/logo.png" width="100px" alt=""></a>
+
+                                    </div>
+                                    <div class>
+                                        <h4 class="text-center  text-black">Sign In</h4>
+
+                                    </div>
+
+                                    <form id="basic-form" action="/login" method="post" class="mt-2">
+
+                                        <div class="form-group"><label for="email" class="mb-1 text-black">Email</label><input class=" input_css " type="email" id="email" name="Email" required></div>
+                                        <span class="focus-input100"></span>
+                                        <div id="errorapi" style="color: red;">{{msg1}}</div>
+                                        <div class="form-group"><label for="password" class="mb-1 text-black">Password</label><input class="input_css" type="password" id="password" required name="password"></div>
+                                        <div style="color: red;">{{msg}}</div>
+                                        <div class="form-group">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" onclick="act()" id="checkbox">
+                                                <input class="d-none" id="ckb2" value="Flase" type="hidden" name="rememberme">
+                                                <label class="form-check-label" for="checkbox" style="font-family: 'poppins', sans-serif;">Remember me</label>
+                                            </div>
+
+
+
+                                            <div class="text-center mt-4 ">
+                                                <div class="form-group"><button class="btn btn-block btn-primary btn-lg rounded-0 border-0" type="submit" style="color: rgb(255,255,255);">LOG IN</button></div>
+
+                                            </div>
+
+
+                                    </form>
+                                    <div id="register-link" class="text-right">
+                                        <a href="/signup" class="text-primary">Sign up</a>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js "></script>
+        <script>
+            var form = $("#basic-form");
+            form.validate()
+
+            function act() {
+                var t = document.getElementById("checkbox").checked;
+                // alert(t)
+                if (t == true) {
+                    document.getElementById("ckb2").value = "True"
+                } else {
+                    document.getElementById("ckb2").value = "False"
+                }
+
+
+            }
+        </script>
+</body>
+
+</html>
